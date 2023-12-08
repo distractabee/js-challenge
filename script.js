@@ -22,17 +22,19 @@ function generatePassword() {
     return false;
 } 
 
-// users can choose which sets of characters to include in password generation
+// user can choose which sets of characters to include in password generation
   var chooseUppers = confirm("Do you want your password to contain upper case letters?");
   var chooseLowers = confirm("Do you want your password to contain lower case letters?");
   var chooseNumbers = confirm("Do you want your password to contain numbers?");
   var chooseSpecials = confirm("Do you want your password to contain special characters?");
 
+  // checks that user has selected at least one of the four potential sets of characters for password generation and stops them from proceeding if not 
   if (!chooseUppers && !chooseLowers && !chooseNumbers && !chooseSpecials) {
   alert("Please choose at least one character type!");
   return false;
 }
 
+  // adds the results of the user choices to the empty array for eventual random selection
   if (chooseUppers) {
     finalCharactersArr = finalCharactersArr.concat(upperCaseCharSet)
   }
@@ -46,10 +48,13 @@ function generatePassword() {
     finalCharactersArr = finalCharactersArr.concat(specialCharSet)
   }
 
+  //randomly selects characters from the array including all selected characters until it reaches the desired length
+
   for (var i = 0; i < userPasswordLength; i++) {
     var randomIndex = Math.floor(Math.random() * finalCharactersArr.length);
     finalPasswordArr.push(finalCharactersArr[randomIndex]);
   }
+  //turns the array into a string
   return finalPasswordArr.join('');
   
 }
