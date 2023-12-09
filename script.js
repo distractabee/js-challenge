@@ -54,11 +54,66 @@ function generatePassword() {
     var randomIndex = Math.floor(Math.random() * finalCharactersArr.length);
     finalPasswordArr.push(finalCharactersArr[randomIndex]);
   }
-  //turns the array into a string
-  return finalPasswordArr.join('');
-  
-}
 
+
+ if (chooseUppers) {
+   var foundthing = 0
+
+    for (var i = 0; i < userPasswordLength; i++) {
+     if (upperCaseCharSet.indexOf(finalPasswordArr[i]) > -1 ) {
+      foundthing = foundthing + 1
+     }
+    }
+     if (foundthing == 0) {
+      finalPasswordArr[Math.floor(Math.random() * finalCharactersArr.length)] = upperCaseCharSet[Math.floor(Math.random() * finalCharactersArr.length)];
+     }
+  
+  }
+
+  if (chooseLowers) {
+    var foundthing = 0
+
+    for (var i = 0; i < userPasswordLength; i++) {
+     if (lowerCaseCharSet.indexOf(finalPasswordArr[i]) > -1) {
+      foundthing = foundthing + 1
+     }
+      } 
+     if (foundthing == 0) {
+      finalPasswordArr[Math.floor(Math.random() * finalCharactersArr.length)] = lowerCaseCharSet[Math.floor(Math.random() * finalCharactersArr.length)];
+     }
+  
+  
+  }
+  if (chooseNumbers) {
+    var foundthing = 0
+
+    for (var i = 0; i < userPasswordLength; i++) {
+     if (numberSet.indexOf(finalPasswordArr[i]) > -1) {
+      foundthing = foundthing + 1
+     }
+    }
+     if (foundthing == 0) {
+      finalPasswordArr[Math.floor(Math.random() * finalCharactersArr.length)] = numberSet[Math.floor(Math.random() * finalCharactersArr.length)];
+     }
+    
+  }
+  if (chooseSpecials) {
+    var foundthing = 0
+
+    for (var i = 0; i < userPasswordLength; i++) {
+     if (specialCharSet.indexOf(finalPasswordArr[i]) > -1) {
+      foundthing = foundthing + 1
+     }
+    
+     if (foundthing == 0) {
+      finalPasswordArr[Math.floor(Math.random() * finalCharactersArr.length)] = specialCharSet[Math.floor(Math.random() * finalCharactersArr.length)];
+     }
+  
+    }
+}
+//turns the array into a string
+return finalPasswordArr.join('');
+}
 
 // Write password to the #password input
 function writePassword() {
