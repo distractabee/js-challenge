@@ -7,6 +7,8 @@ I undertook this project to learn how to write a function that could generate a 
 
 ## Usage
 
+The web application is located [here](https://distractabee.github.io/js-challenge/)
+
 Usage is straightforward. When a user clicks on the "Generate Password" button, they will be given a prompt asking how many characters long the password should be. Then there are four Y/N confirmation messages that ask if the user would like to include or not upper case letters, lower case letters, numbers and special characters. They may click yes or no as desired, and at the end the password will be generated in the text field about the button.
 
 ![Entering desired length](images/pwlength.png)
