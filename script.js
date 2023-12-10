@@ -55,64 +55,63 @@ function generatePassword() {
     finalPasswordArr.push(finalCharactersArr[randomIndex]);
   }
 
+  /* these sections of code check the final password array to make sure that it contains at least one of the apropriate character set for each option the user selected.
+    If that character is not found, it takes a random index from the character set and replaces another random index in the final array with it. Easiest way I could come 
+    up with to make sure that all user-selected characters are included
+ */
 
- if (chooseUppers) {
-   var foundthing = 0
-
-    for (var i = 0; i < userPasswordLength; i++) {
-     if (upperCaseCharSet.indexOf(finalPasswordArr[i]) > -1 ) {
-      foundthing = foundthing + 1
-     }
+    if (chooseUppers) {
+      var foundUppers = 0;
+      for (var i = 0; i < userPasswordLength; i++) {
+        if (specialCharSet.indexOf(finalPasswordArr[i]) > -1) {
+          foundUppers = foundUppers + 1;
+        }
+      }
+      if (foundUppers == 0) {
+        // This should be outside the loop to check after the entire password is checked - Alex Kaye
+        finalPasswordArr[Math.floor(Math.random() * finalCharactersArr.length)] = upperCaseCharSet[Math.floor(Math.random() * finalCharactersArr.length)];
+      }
     }
-     if (foundthing == 0) {
-      finalPasswordArr[Math.floor(Math.random() * finalCharactersArr.length)] = upperCaseCharSet[Math.floor(Math.random() * finalCharactersArr.length)];
-     }
-  
-  }
 
-  if (chooseLowers) {
-    var foundthing = 0
-
-    for (var i = 0; i < userPasswordLength; i++) {
-     if (lowerCaseCharSet.indexOf(finalPasswordArr[i]) > -1) {
-      foundthing = foundthing + 1
-     }
-      } 
-     if (foundthing == 0) {
-      finalPasswordArr[Math.floor(Math.random() * finalCharactersArr.length)] = lowerCaseCharSet[Math.floor(Math.random() * finalCharactersArr.length)];
-     }
-  
-  
-  }
-  if (chooseNumbers) {
-    var foundthing = 0
-
-    for (var i = 0; i < userPasswordLength; i++) {
-     if (numberSet.indexOf(finalPasswordArr[i]) > -1) {
-      foundthing = foundthing + 1
-     }
+    if (chooseLowers) {
+      var foundLowers = 0;
+      for (var i = 0; i < userPasswordLength; i++) {
+        if (specialCharSet.indexOf(finalPasswordArr[i]) > -1) {
+          foundLowers = foundLowers + 1;
+        }
+      }
+      if (foundLowers == 0) {
+        finalPasswordArr[Math.floor(Math.random() * finalCharactersArr.length)] = lowerCaseCharSet[Math.floor(Math.random() * finalCharactersArr.length)];
+      }
     }
-     if (foundthing == 0) {
-      finalPasswordArr[Math.floor(Math.random() * finalCharactersArr.length)] = numberSet[Math.floor(Math.random() * finalCharactersArr.length)];
-     }
-    
-  }
-  if (chooseSpecials) {
-    var foundthing = 0
 
-    for (var i = 0; i < userPasswordLength; i++) {
-     if (specialCharSet.indexOf(finalPasswordArr[i]) > -1) {
-      foundthing = foundthing + 1
-     }
-    
-     if (foundthing == 0) {
-      finalPasswordArr[Math.floor(Math.random() * finalCharactersArr.length)] = specialCharSet[Math.floor(Math.random() * finalCharactersArr.length)];
-     }
-  
+    if (chooseNumbers) {
+      var foundNumbers = 0;
+      for (var i = 0; i < userPasswordLength; i++) {
+        if (specialCharSet.indexOf(finalPasswordArr[i]) > -1) {
+          foundNumbers = foundNumbers + 1;
+        }
+      }
+      if (foundNumbers == 0) {
+        finalPasswordArr[Math.floor(Math.random() * finalCharactersArr.length)] = numberSet[Math.floor(Math.random() * finalCharactersArr.length)];
+      }
     }
-}
+
+    if (chooseSpecials) {
+      var foundSpecials = 0;
+      for (var i = 0; i < userPasswordLength; i++) {
+        if (specialCharSet.indexOf(finalPasswordArr[i]) > -1) {
+          foundSpecials = foundSpecials + 1;
+        }
+      }
+      if (foundSpecials == 0) {
+        finalPasswordArr[Math.floor(Math.random() * userPasswordLength)] = specialCharSet[Math.floor(Math.random() * specialCharSet.length)];
+      }
+    }
+
 //turns the array into a string
 return finalPasswordArr.join('');
+
 }
 
 // Write password to the #password input
